@@ -9,17 +9,17 @@ import '@fortawesome/fontawesome-free/css/all.css'
 
 import { auth } from '@/firebase'
 
+import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll)
+
 Vue.config.productionTip = false
 
 auth.onAuthStateChanged(function (user) {
   if (user) {
-    var displayName = user.displayName
-    var email = user.email
-    // var emailVerified = user.emailVerified
-    var photoURL = user.photoURL
-    // var isAnonimous = user.isAnonymous
-    var uid = user.uid
-    // var providerData = user.providerData
+    // var displayName = user.displayName
+    // var email = user.email
+    // var photoURL = user.photoURL
+    // var uid = user.uid
     // mandamos la info de user a vuex con dispatch 
     store.dispatch('setUsuario', user)
     console.log(user.displayName)

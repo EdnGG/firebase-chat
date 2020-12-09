@@ -17,6 +17,18 @@ const routes = [
     name: 'login',
     component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
   },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Admin.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Chat.vue'),
+    meta: { requiresAuth: true }
+  },
 ]
 
 const router = new VueRouter({
@@ -30,7 +42,7 @@ router.beforeEach((to, from, next) => {
     if (user) {
      next()
     } else {
-      next({name: "Login"})
+      next({name: "login"})
     }
   } else {
     next()
